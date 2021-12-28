@@ -7,7 +7,7 @@ const arraySearch = (array,string) =>{
     let found = false
     for (let i = 0; i < array.length; i++) {
         if (array[i] === string){
-            thing = true
+            found = true
         }
     }
     return found

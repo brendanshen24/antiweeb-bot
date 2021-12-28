@@ -18,6 +18,7 @@
     "nodemon": "^2.0.15"
   },
   "devDependencies": {
+    "an-array-of-english-words": "^2.0.0",
     "request": "^2.88.2"
   }
 }

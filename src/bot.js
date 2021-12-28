@@ -3,11 +3,25 @@ const animeTitles = require('../animeList.json');
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
+const arraySearch = (array,string) =>{
+    let found = false
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === string){
+            thing = true
+        }
+    }
+    return found
+}
+
 const messageCheck = message =>{
-    return !!animeTitles.find((word) => {
+    const words = require('an-array-of-english-words');
+    const findanime = !!animeTitles.find((word) => {
         const regex = new RegExp(`\\b${word}\\b`, 'i');
         return regex.test(message);
-    })
+    });
+    if (arraySearch(words,getMetadata(message)) === false) {
+        return findanime
+    }
 }
 
 const getMetadata = message => {
@@ -37,6 +51,7 @@ const getsendWikipedia = message =>{
         }
     });
 }
+
 
 client.on('messageCreate', (message) =>{
     console.log(`[${message.author.tag}]: ${message.content}`)
